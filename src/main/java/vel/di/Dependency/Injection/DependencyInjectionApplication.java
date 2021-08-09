@@ -3,10 +3,7 @@ package vel.di.Dependency.Injection;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import vel.di.Dependency.Injection.controllers.ConstructorInjectedController;
-import vel.di.Dependency.Injection.controllers.MyController;
-import vel.di.Dependency.Injection.controllers.PropertyInjectedController;
-import vel.di.Dependency.Injection.controllers.SetterInjectedController;
+import vel.di.Dependency.Injection.controllers.*;
 
 @SpringBootApplication
 public class DependencyInjectionApplication {
@@ -14,6 +11,12 @@ public class DependencyInjectionApplication {
 	public static void main(String[] args) {
 
 		ApplicationContext ctx = SpringApplication.run(DependencyInjectionApplication.class, args);
+
+		I18nController i18nController =(I18nController) ctx.getBean("i18nController");
+
+		System.out.println("-----Language Bean");
+		System.out.println(i18nController.sayHello());
+
 		MyController myController =(MyController) ctx.getBean("myController");
 		System.out.println("-----Primary Bean");
 		System.out.println(myController.sayHello());
